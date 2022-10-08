@@ -1,15 +1,13 @@
 const express = require('express');
-const studentRoutes = require('./src/student/routes')
+const pimRoutes = require('./src/pumpim/routes')
 
 const app = express();
 const port = 3000;
 
+app.use(express.static("./public"));
+
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Hello world!");
-})
-
-app.use("/api/v1/students", studentRoutes);
+app.use("/products", pimRoutes);
 
 app.listen(port, () => console.log(`App listening on ${port}`));

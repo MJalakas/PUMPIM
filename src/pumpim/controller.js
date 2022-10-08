@@ -1,13 +1,27 @@
 const pool = require('../../db');
 const queries = require('./queries');
 
-const getStudents = (req, res) => {
-    pool.query(queries.getStudents, (error, results) => {
+const getProducts = (req, res) => {
+    pool.query(queries.getProducts, (error, results) => {
         if (error) throw error;
         res.status(200).json(results.rows);
     });
 };
 
+const addProduct = (req, res) => {
+    const { name, brand, price } = req.body;
+    pool.query(queries.addProduct, [name, brand, price], (error, results) => {
+        if (error) throw error;
+        res.status(201).send("Product added!");
+    });
+};
+
+module.exports = {
+    getProducts,
+    addProduct,
+};
+
+/*
 const getStudentById = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getStudentById, [id], (error, results) => {
@@ -64,11 +78,4 @@ const updateStudent = (req, res) => {
     });
 
 };
-
-module.exports = {
-    getStudents,
-    getStudentById,
-    addStudent,
-    removeStudent,
-    updateStudent,
-};
+*/
