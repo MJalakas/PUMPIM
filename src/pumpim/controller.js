@@ -12,7 +12,7 @@ const addProduct = (req, res) => {
     const { name, brand, price } = req.body;
     pool.query(queries.addProduct, [name, brand, price], (error, results) => {
         if (error) throw error;
-        res.status(201).send("Product added!");
+        res.status(201).send(req.body);
     });
 };
 
