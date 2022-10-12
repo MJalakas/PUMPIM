@@ -1,3 +1,21 @@
 body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+h1, .products-table {
+    padding-left:20px;
+}
+
+.products-table {
+    width:500px;
+    height:1000px;
+    display:flex;
+}
+
+.table-header {
+    padding-right:50px;
+}
+
+td {
+    padding-top:20px;
+}
