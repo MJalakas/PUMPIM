@@ -30,18 +30,34 @@ function getProducts(next) {
     });
 };
 
-function showProducts() {
-    const tableRows = document.querySelectorAll(".product");
-    const tableRowsArray = Array.from(tableRows)
+function generateTableContent() {
+    var table = document.querySelector(".products-table")
+    var productsResultJson = Array.from(allProducts);
+    productsResultJson.forEach(function callback(row, index) {
+        const newRow = table.insertRow();
 
-    tableRowsArray.forEach(function callback(row, index) {
-        const tableCells = row.querySelectorAll("td")
-        const nameCell = row.querySelector(".product-name");
-        const brandCell = row.querySelector(".brand");
-        const priceCell = row.querySelector(".price");
+        const idCell = newRow.insertCell();
+        const nameCell = newRow.insertCell();
+        const brandCell = newRow.insertCell();
+        const priceCell = newRow.insertCell();
+
+        idCell.innerHTML = allProducts[index]["id"]
         nameCell.innerHTML = allProducts[index]["name"]
         brandCell.innerHTML = allProducts[index]["brand"]
         priceCell.innerHTML = allProducts[index]["price"]
     });
 }
-getProducts(showProducts);
+
+getProducts(generateTableContent);
+
+const formElement = document.querySelector(".add-product-form")
+const sumbitButton = document.querySelector(".add-product-button");
+
+sumbitButton.addEventListener("click", function() {
+    const formData = new FormData(formElement);
+    newProductName = formData.get('name-input');
+    newProductBrand = formData.get('brand-input');
+    newProductPrice = formData.get('price-input');
+
+    postProducts( newProductName, newProductBrand, newProductPrice )
+})

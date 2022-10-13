@@ -8,7 +8,6 @@ h1, .products-table {
 
 .products-table {
     width:500px;
-    height:1000px;
     display:flex;
 }
 
@@ -18,4 +17,16 @@ h1, .products-table {
 
 td {
     padding-top:20px;
+}
+
+.add-product-form {
+    padding-top:50px;
+}
+
+form {
+    display:flex;
+    flex-direction: column;
+    max-width:300px;
+    gap:5px;
+    padding-left:20px;
 }
