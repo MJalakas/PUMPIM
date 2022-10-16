@@ -4,30 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="normalize.css" media="screen">
+    <link rel="stylesheet" href="styles.css" media="screen">
     <title>PUMPIM</title>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>PUMPIM</h1>
-    <table class="products-table">
-        <tr class="products-table-header">
-            <th class="product-id table-header">ID</th>
-            <th class="product-name-header table-header">Product name</th>
-            <th class="brand-header table-header">Brand</th>
-            <th class="price-header table-header">Price</th>
-        </tr>
-    </table>
+    <div class="header">
+        <div class="header-right">
+            <h1>PUMPIM</h1>
+        </div>
+        <div class="header-left">
+            <a class="nav-button">Page1</a>
+            <a class="nav-button">Page2</a>
+            <a class="nav-button">Page3</a>
+            <a class="nav-button">Page4</a>
+        </div>
+
+    </div>
+    <div class="products-table-wrapper">
+        <table class="products-table">
+            <tr class="products-table-header">
+                <th class="product-id table-header">ID</th>
+                <th class="product-name-header table-header">Product name</th>
+                <th class="brand-header table-header">Brand</th>
+                <th class="price-header table-header">Price</th>
+            </tr>
+        </table>
+        <form class="add-product-form">
+            <div class=name-input-wrapper>
+                <label for="name-input">Product name</label>
+                <input type="text" class="name-input" name="name-input">
+            </div>
+            <div class=brand-input-wrapper>
+                <label for="brand-input">Brand name</label>
+                <input type="text" class="brand-input" name="brand-input">
+            </div>
+            <div class=price-input-wrapper>
+                <label for="price-input">Price</label>
+                <input type="number" class="price-input" name="price-input">
+            </div>
+            <button type="submit" class="add-product-button">Add product</button>
+        </form>
+    </div>
     
-    <form class="add-product-form">
-        <label for="name-input">Product name</label>
-        <input type="text" class="name-input" name="name-input">
-        <label for="brand-input">Brand name</label>
-        <input type="text" class="brand-input" name="brand-input">
-        <label for="price-input">Price</label>
-        <input type="number" class="price-input" name="price-input">
-        <button type="submit" class="add-product-button">Add product</button>
-    </form>
 
 </body>
 </html>

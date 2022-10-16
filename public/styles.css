@@ -1,33 +1,106 @@
 body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color:#222831;
+    color: #EEEEEE;
+    font-size:16px;
 }
 
-h1, .products-table {
-    padding-left:20px;
+.header {
+    padding:0 20px 0 20px;
+    background: #393E46;
+    color: #EEEEEE;
+    font-size: 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-left {
+    display:flex;
+    gap:30px;
+}
+
+h1 {
+    margin:10px 0 10px 0;
+    color:#bf87ff;
+}
+
+.products-table-header {
+    text-align:left;
 }
 
 .products-table {
-    width:500px;
     display:flex;
+    margin:20px;
+    background-color: #393E46;
+    padding:30px;
+    border-radius: 15px 50px;
+    text-align:left;
+    border-collapse: collapse;
+    font-size:18px;
+}
+.products-table-wrapper {
+    display:flex;
+    justify-content: left;
+    width:100vw;
 }
 
-.table-header {
-    padding-right:50px;
+.product-id, .id-td {
+    min-width: 150px;
+}
+
+.product-name-header, .name-td {
+    min-width:250px;
+}
+
+.brand-header, .brand-td {
+    min-width: 150px;
+}
+
+.price-header, .price-td {
+    min-width:150px;
+}
+
+tr {
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color:#EEEEEE;
 }
 
 td {
-    padding-top:20px;
-    padding-left:10px;
+    padding:5px 0 5px 0;
 }
 
 .add-product-form {
-    padding-top:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    gap:5px;
+    background-color:#393E46;
+    margin:20px;
+    padding:30px;
+    border-radius: 15px 50px;
+    max-height:250px;
 }
 
-form {
+.name-input-wrapper, .brand-input-wrapper, .price-input-wrapper {
     display:flex;
     flex-direction: column;
-    max-width:300px;
-    gap:5px;
-    padding-left:20px;
+}
+
+.delete-button, .add-product-button {
+    background-color:#bf87ff;
+    color:#222831;
+    border-color:#222831;
+    border-style:solid;
+    border-width:2px;
+    font-weight:bold;
+    padding:4px 8px 4px 8px;
+}
+
+input {
+    border-style:solid;
+    border-color:#222831;
+    border-width:3px;
+    margin-top:2px;
 }

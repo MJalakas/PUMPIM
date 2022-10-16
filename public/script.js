@@ -64,6 +64,10 @@ function generateTableContent() {
             deleteProduct(idCell.innerHTML);
             window.location.reload();
         });
+        idCell.className = "id-td";
+        nameCell.className = "name-td";
+        brandCell.className = "brand-td";
+        priceCell.className ="price-td";
     });
 }
 
