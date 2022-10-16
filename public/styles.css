@@ -17,6 +17,7 @@ h1, .products-table {
 
 td {
     padding-top:20px;
+    padding-left:10px;
 }
 
 .add-product-form {

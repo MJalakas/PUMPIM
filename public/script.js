@@ -16,6 +16,16 @@ function postProducts( name, brand, price ) {
 
 }
 
+function deleteProduct( id ) {
+    fetch(`/products/${id}`, {
+        method: 'DELETE',
+    }).then(res => {
+        if (res.ok) return res.text();
+        return "Failed to delete";
+    });
+
+}
+
 var allProducts
 
 function getProducts(next) {
@@ -40,11 +50,20 @@ function generateTableContent() {
         const nameCell = newRow.insertCell();
         const brandCell = newRow.insertCell();
         const priceCell = newRow.insertCell();
+        const deleteButtonCell = newRow.insertCell();
+        const deleteButton = document.body.appendChild(document.createElement("BUTTON"));
+        deleteButtonCell.append(deleteButton);
 
-        idCell.innerHTML = allProducts[index]["id"]
-        nameCell.innerHTML = allProducts[index]["name"]
-        brandCell.innerHTML = allProducts[index]["brand"]
-        priceCell.innerHTML = allProducts[index]["price"]
+        idCell.innerHTML = allProducts[index]["id"];
+        nameCell.innerHTML = allProducts[index]["name"];
+        brandCell.innerHTML = allProducts[index]["brand"];
+        priceCell.innerHTML = allProducts[index]["price"];
+        deleteButton.innerHTML = "X";
+        deleteButton.className = "delete-button";
+        deleteButton.addEventListener("click", function () {
+            deleteProduct(idCell.innerHTML);
+            window.location.reload();
+        });
     });
 }
 
@@ -53,11 +72,18 @@ getProducts(generateTableContent);
 const formElement = document.querySelector(".add-product-form")
 const sumbitButton = document.querySelector(".add-product-button");
 
-sumbitButton.addEventListener("click", function() {
+formElement.addEventListener("submit", function(event) {
+
+    event.preventDefault()
+
     const formData = new FormData(formElement);
     newProductName = formData.get('name-input');
     newProductBrand = formData.get('brand-input');
     newProductPrice = formData.get('price-input');
 
     postProducts( newProductName, newProductBrand, newProductPrice )
-})
+
+    window.location.reload();
+    
+});
+

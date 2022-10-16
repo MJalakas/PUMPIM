@@ -16,9 +16,37 @@ const addProduct = (req, res) => {
     });
 };
 
+const getProductById = (req, res) => {
+    const id = parseInt(req.params.id);
+    
+    pool.query(queries.getProductById, [id], (error, results) => {
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    });
+};
+
+const deleteProduct = (req, res) => {
+    const id = parseInt(req.params.id);
+    
+    pool.query(queries.getProductById, [id], (error, results) => {
+        const noProductFound = !results.rows.length;
+        if (noProductFound) {
+            res.send("Product does not exist");
+        };
+        
+        pool.query(queries.deleteProduct, [id], (error, results) => {
+            if (error) throw error;
+            res.status(200).send(`Product id ${id} deleted`);
+        });
+    });
+};
+
+
 module.exports = {
     getProducts,
     addProduct,
+    deleteProduct,
+    getProductById,
 };
 
 /*

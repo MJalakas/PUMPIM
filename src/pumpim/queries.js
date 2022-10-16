@@ -8,7 +8,12 @@
 const getProducts = "SELECT * FROM products";
 const addProduct = "INSERT INTO public.products (name, brand, price) VALUES ($1, $2, $3)";
 
+const getProductById = "SELECT * FROM products WHERE id = $1";
+const deleteProduct = "DELETE FROM products WHERE id = $1";
+
 module.exports = {
     getProducts,
     addProduct,
+    deleteProduct,
+    getProductById,
 };
