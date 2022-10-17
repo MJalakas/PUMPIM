@@ -111,3 +111,8 @@ input {
     border-width:3px;
     margin-top:2px;
 }
+
+.nav-button, .nav-button:visited {
+    text-decoration:none;
+    color:#EEEEEE
+}
