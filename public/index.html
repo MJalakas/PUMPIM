@@ -12,20 +12,24 @@
     <title>PUMPIM</title>
     <script src="script.js" defer></script>
 </head>
+
 <body>
+
     <div class="header">
         <div class="header-right">
             <h1>pumPIM</h1>
         </div>
         <div class="header-left">
-            <a class="nav-button" href="../products/index.html">Products</a>
-            <a class="nav-button" href="../brands/index.html" >Brands</a>
+            <a class="nav-button" href="../products-page">Products</a>
+            <a class="nav-button" href="../brands" >Brands</a>
             <a class="nav-button" href="/categories">Categories</a>
             <a class="nav-button" href="/my-account">My Account</a>
         </div>
 
     </div>
+
     <div class="products-table-wrapper">
+        
         <table class="products-table">
             <tr class="products-table-header">
                 <th class="product-id table-header">ID</th>
@@ -34,7 +38,28 @@
                 <th class="price-header table-header">Price</th>
             </tr>
         </table>
+
+        <form class="product-search">
+            <div class="search-product-title">SEARCH</div>
+            <div class="id-input-wrapper">
+                <label for="id-input">ID</label>
+                <input type="number" class="search-id-input" name="search-id-input">
+            </div>
+            <!---
+            <div class=name-input-wrapper>
+                <label for="name-input">Product name</label>
+                <input type="text" class="search-name-input" name="search-name-input">
+            </div>
+            <div class=brand-input-wrapper>
+                <label for="brand-input">Brand name</label>
+                <input type="text" class="search-brand-input" name="search-brand-input">
+            </div>
+            -->
+            <button type="submit" class="search-product-button">Search</button>
+        </form>
+
         <form class="add-product-form">
+            <div class="add-product-title">NEW PRODUCT</div>
             <div class=name-input-wrapper>
                 <label for="name-input">Product name</label>
                 <input type="text" class="name-input" name="name-input">
@@ -49,6 +74,7 @@
             </div>
             <button type="submit" class="add-product-button">Add product</button>
         </form>
+
     </div>
     
 

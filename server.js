@@ -4,7 +4,7 @@ const pimRoutes = require('./src/pumpim/routes')
 const app = express();
 const port = 3000;
 
-app.use(express.static("./public/main"));
+app.use(express.static("./public"));
 
 app.use(express.json());
 

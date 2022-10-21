@@ -71,7 +71,7 @@ td {
     padding:5px 0 5px 0;
 }
 
-.add-product-form {
+.add-product-form, .product-search {
     display:flex;
     flex-direction:column;
     justify-content: space-between;
@@ -80,15 +80,19 @@ td {
     margin:20px;
     padding:30px;
     border-radius: 15px 50px;
-    max-height:250px;
+    max-height:300px;
 }
 
-.name-input-wrapper, .brand-input-wrapper, .price-input-wrapper {
+.product-search {
+    max-height:150px; 
+}
+
+.name-input-wrapper, .brand-input-wrapper, .price-input-wrapper, .id-input-wrapper {
     display:flex;
     flex-direction: column;
 }
 
-.delete-button, .add-product-button {
+.delete-button, .add-product-button, .search-product-button {
     background-color:#bf87ff;
     color:#222831;
     border-style:none;
@@ -100,7 +104,7 @@ td {
     border-radius:9px 4px;
 }
 
-.add-product-button {
+.add-product-button, .search-product-button {
     padding: 8px;
     border-radius: 50px 15px;
 }
@@ -115,4 +119,10 @@ input {
 .nav-button, .nav-button:visited {
     text-decoration:none;
     color:#EEEEEE
+}
+
+.add-product-title, .search-product-title {
+    color:#bf87ff;
+    font-weight: bold;
+    font-size:20px;
 }
