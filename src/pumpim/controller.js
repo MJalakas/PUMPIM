@@ -1,109 +1,39 @@
-const pool = require('../../db');
-const queries = require('./queries');
+const db = require('../../db');
 
-const getProducts = (req, res) => {
-    pool.query(queries.getProducts, (error, results) => {
-        if (error) throw error;
-        res.status(200).json(results.rows);
-    });
-};
+async function getProducts() {
+    const rows = await db.query(`SELECT * FROM products`)
+    return rows
+}
 
-const addProduct = (req, res) => {
-    const { name, brand, price } = req.body;
-    pool.query(queries.addProduct, [name, brand, price], (error, results) => {
-        if (error) throw error;
-        res.status(201).send(req.body);
-    });
-};
+async function getProductById(id) {
+    const rows = await db.query(`SELECT * FROM products WHERE id="${id}"`)
+    return rows
+}
 
-const getProductById = (req, res) => {
-    const id = parseInt(req.params.id);
-    
-    pool.query(queries.getProductById, [id], (error, results) => {
-        if (error) throw error;
-        res.status(200).json(results.rows);
-    });
-};
+async function addProduct(product) {
+    const result = await db.query(`INSERT INTO products (name, brand, price) VALUES ("${product.name}", "${product.brand}", "${product.price}")`)
+    let message = 'Error creating product'
 
-const deleteProduct = (req, res) => {
-    const id = parseInt(req.params.id);
-    
-    pool.query(queries.getProductById, [id], (error, results) => {
-        const noProductFound = !results.rows.length;
-        if (noProductFound) {
-            res.send("Product does not exist");
-        };
-        
-        pool.query(queries.deleteProduct, [id], (error, results) => {
-            if (error) throw error;
-            res.status(200).send(`Product id ${id} deleted`);
-        });
-    });
-};
+    if (result.affectedRows) {
+        message = 'Product added'
+    }
 
+    return {message}
+}
 
-module.exports = {
-    getProducts,
-    addProduct,
-    deleteProduct,
-    getProductById,
-};
+async function deleteProduct(id){
+    const result = await db.query(
+      `DELETE FROM products WHERE id="${id}"`
+    );
+  
+    let message = 'Error in deleting product';
+  
+    if (result.affectedRows) {
+      message = 'Product deleted successfully';
+    }
+  
+    return {message};
+  }
 
-/*
-const getStudentById = (req, res) => {
-    const id = parseInt(req.params.id);
-    pool.query(queries.getStudentById, [id], (error, results) => {
-        if (error) throw error;
-        res.status(200).json(results.rows);
-    });
-};
+module.exports = {getProducts, addProduct, deleteProduct, getProductById}
 
-const addStudent = (req, res) => {
-    const { name, email, age, dob } = req.body;
-    // check if email exists
-    pool.query(queries.checkEmailExists, [email], (error, results) => {
-        if (results.rows.length) {
-            res.send("Email already in use");
-        };
-
-        // add student to db if email doesnt exist
-        pool.query(queries.addStudent, [name, email, age, dob], (error, results) => {
-            if (error) throw error;
-            res.status(201).send("Student created successfully!");
-        });
-    });
-};
-
-const removeStudent = (req, res) => {
-    const id = parseInt(req.params.id);
-    
-    pool.query(queries.getStudentById, [id], (error, results) => {
-        const noStudentFound = !results.rows.length;
-        if (noStudentFound) {
-            res.send("Student does not exist in the database");
-        };
-        
-        pool.query(queries.removeStudent, [id], (error, results) => {
-            if (error) throw error;
-            res.status(200).send(`Student id ${id} has been deleted!`);
-        });
-    });
-};
-
-const updateStudent = (req, res) => {
-    const id = parseInt(req.params.id);
-    const { name } = req.body;
-
-    pool.query(queries.getStudentById, [id], (error, results) => {
-        if (!results.rows.length) {
-            res.send("Student does not exist");
-        };
-
-        pool.query(queries.updateStudent, [name, id], (error, results) => {
-            if (error) throw error;
-            res.status(200).send("Student updated!")
-        });
-    });
-
-};
-*/
