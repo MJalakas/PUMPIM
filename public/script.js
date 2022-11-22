@@ -32,7 +32,7 @@ function searchProduct(id, name, brand) {
   } else {
     const searchResult = getProducts(function () {
       const filteredProducts = allProducts.filter(function (allProducts) {
-        searchBy = allProducts.id.toString();
+        var searchBy = allProducts.id.toString();
         return searchBy.includes(id) == true;
       });
       resetTableContent(filteredProducts);
@@ -43,7 +43,7 @@ function searchProduct(id, name, brand) {
 var allProducts;
 
 function getProducts(next) {
-  fetch("/products", {
+  fetch("https://pumpim.martencode.ee/products", {
     method: "GET",
   })
     .then((res) => {
@@ -108,9 +108,9 @@ addProductFormElement.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const formData = new FormData(addProductFormElement);
-  newProductName = formData.get("name-input");
-  newProductBrand = formData.get("brand-input");
-  newProductPrice = formData.get("price-input");
+  var newProductName = formData.get("name-input");
+  var newProductBrand = formData.get("brand-input");
+  var newProductPrice = formData.get("price-input");
 
   postProducts(newProductName, newProductBrand, newProductPrice);
 
